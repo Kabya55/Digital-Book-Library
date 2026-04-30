@@ -60,7 +60,7 @@
     "description": "A young wizard begins his magical journey.",
     "category": "Story",
     "available_quantity": 9,
-    "image_url": "https://covers.openlibrary.org/b/id/7984916-L.jpg"
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNTU1MzgyMDMtMzBlZS00YzczLThmYWEtMjU3YmFlOWEyMjE1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
   },
   {
     "id": 8,
@@ -69,7 +69,7 @@
     "description": "Deep dive into JavaScript core mechanisms.",
     "category": "Tech",
     "available_quantity": 7,
-    "image_url": "https://covers.openlibrary.org/b/id/10594755-L.jpg"
+    "image_url": "https://kbpsystem777.github.io/You-Dont-Know-JS/this&object-prototypes/cover.jpg"
   },
   {
     "id": 9,
@@ -78,7 +78,7 @@
     "description": "Foundation of evolutionary biology.",
     "category": "Science",
     "available_quantity": 11,
-    "image_url": "https://covers.openlibrary.org/b/id/8235116-L.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/71ea0N8I14L.jpg"
   },
   {
     "id": 10,
@@ -87,7 +87,7 @@
     "description": "A fantasy adventure preceding the Lord of the Rings.",
     "category": "Story",
     "available_quantity": 14,
-    "image_url": "https://covers.openlibrary.org/b/id/6979861-L.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/en/a/a9/The_Hobbit_trilogy_dvd_cover.jpg"
   },
   {
     "id": 11,
@@ -96,7 +96,7 @@
     "description": "A hands-on introduction to programming with Python.",
     "category": "Tech",
     "available_quantity": 4,
-    "image_url": "https://covers.openlibrary.org/b/id/10389354-L.jpg"
+    "image_url": "https://m.media-amazon.com/images/S/aplus-media/sota/86ba2963-c417-4a26-8770-d453a8510faa.__CR0,0,300,300_PT0_SX300_V1___.jpg"
   },
   {
     "id": 12,
@@ -105,6 +105,6 @@
     "description": "Superstrings, hidden dimensions, and the quest for ultimate theory.",
     "category": "Science",
     "available_quantity": 13,
-    "image_url": "https://covers.openlibrary.org/b/id/240726-L.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/911W4H7y+2L._AC_UF1000,1000_QL80_.jpg"
   }
 ]

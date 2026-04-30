@@ -1,9 +1,11 @@
-import Image from "next/image";
+import Banner from "@/component/home/Banner";
+import BookMarquee from "@/component/home/BookMarquee";
 
 export default function Home() {
   return (
     <>
-      <div>Kabya Kishor Halder</div>
+      <Banner />
+      <BookMarquee />
     </>
   );
 }

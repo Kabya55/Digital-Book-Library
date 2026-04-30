@@ -3,6 +3,7 @@ import BooksCard from "../shere/BooksCard";
 const FeaturedBooks = async () => {
   const res = await fetch(
     "https://programming-hero-13-sltu.vercel.app/data.json",
+    { cache: "no-store" },
   );
   const data = await res.json();
   const topBooks = data.slice(0, 4);

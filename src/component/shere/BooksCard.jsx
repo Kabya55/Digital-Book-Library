@@ -15,7 +15,7 @@ const BooksCard = ({ book }) => {
       <h2 className="font-semibold mt-3">{book.title}</h2>
 
       <Link
-        href={`/books/${book.id}`}
+        href={`/all-books/${book.id}`}
         className="inline-block mt-3 text-sm px-4 py-2 bg-black text-white rounded-full"
       >
         View Details

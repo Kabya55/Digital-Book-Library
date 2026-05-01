@@ -14,7 +14,7 @@ import {
 import { Eye, EyeSlash } from "@gravity-ui/icons";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { authClient } from "@/app/lib/auth-client";
+import { authClient } from "@/lib/auth-client";
 
 const SignUpPage = () => {
   const [isVisible, setIsVisible] = useState(false);

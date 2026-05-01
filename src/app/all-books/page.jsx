@@ -1,6 +1,11 @@
 import Category from "@/component/Category";
 import BooksCard from "@/component/shere/BooksCard";
 import SearchBar from "@/component/shere/SearchBar";
+
+export const metadata = {
+  title: "Digital Book Library || All Books",
+  description: "Find and borrow your favorite books online",
+};
 const AllBooksPage = async ({ searchParams }) => {
   const { category, search } = await searchParams;
 

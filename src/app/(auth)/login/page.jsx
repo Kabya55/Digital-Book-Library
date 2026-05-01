@@ -19,8 +19,6 @@ const LogInPage = () => {
   const [isVisible, setIsVisible] = useState(false);
   const searchParams = useSearchParams();
 
-  // const prevUrl = document.referrer;
-  // console.log(prevUrl);
   const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);

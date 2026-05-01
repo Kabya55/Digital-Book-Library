@@ -2,6 +2,11 @@ import BorrowButton from "@/component/BorrowButton";
 import Image from "next/image";
 import React from "react";
 
+export const metadata = {
+  title: "Digital Book Library || Book Details",
+  description: "Find and borrow your favorite books online",
+};
+
 const BookDetailsPage = async ({ params }) => {
   const { id } = await params;
 

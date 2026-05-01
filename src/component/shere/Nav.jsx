@@ -93,13 +93,14 @@ const Nav = () => {
             <div className="flex gap-2 text-sm">
               <Link
                 href="/signup"
-                className="px-3 py-1 rounded-md bg-gray-100 hover:bg-black hover:text-white transition"
+                className={`${baseBtn} ${pathname === "/signup" ? activeBtn : ""}`}
               >
                 SignUp
               </Link>
+
               <Link
                 href="/login"
-                className="px-3 py-1 rounded-md bg-slate-800 text-white hover:bg-black transition"
+                className={`${baseBtn} ${pathname === "/login" ? activeBtn : ""}`}
               >
                 Login
               </Link>

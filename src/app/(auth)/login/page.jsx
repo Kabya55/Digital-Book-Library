@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import {
   Button,
@@ -11,11 +12,11 @@ import {
   TextField,
 } from "@heroui/react";
 import { Eye, EyeSlash } from "@gravity-ui/icons";
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 
-const LogInPage = () => {
+function LoginForm() {
   const [isVisible, setIsVisible] = useState(false);
   const searchParams = useSearchParams();
 
@@ -27,113 +28,76 @@ const LogInPage = () => {
     const callbackUrl = searchParams.get("callbackUrl") || "/";
 
     const { data, error } = await authClient.signIn.email({
-      email: userData.email, // required
-      password: userData.password, // required
+      email: userData.email,
+      password: userData.password,
       rememberMe: true,
       callbackURL: callbackUrl,
     });
 
     if (error) {
-      alert("Login error:", error);
+      alert(error.message);
     }
+
     if (data) {
-      alert("Login successful:", data);
+      alert("Login successful");
     }
   };
 
   return (
-    <>
-      <div className="flex min-h-screen items-center justify-center bg-gray-100">
-        <div className="rounded-lg bg-white p-8 shadow-md">
-          <h2 className="mb-6 text-center text-2xl font-semibold">
-            Login your account
-          </h2>
+    <div className="flex min-h-screen items-center justify-center bg-gray-100">
+      <div className="rounded-lg bg-white p-8 shadow-md">
+        <h2 className="mb-6 text-center text-2xl font-semibold">
+          Login your account
+        </h2>
 
-          <Form className="flex flex-col gap-4" onSubmit={onSubmit}>
-            {/* Email */}
-            <TextField
-              isRequired
-              name="email"
-              type="email"
-              validate={(value) => {
-                if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
-                  return "Please enter a valid email address";
-                }
-                return null;
-              }}
-            >
-              <Label>Email address</Label>
-              <Input placeholder="Enter your email address" />
-              <FieldError />
-            </TextField>
+        <Form className="flex flex-col gap-4" onSubmit={onSubmit}>
+          <TextField isRequired name="email" type="email">
+            <Label>Email address</Label>
+            <Input placeholder="Enter your email address" />
+            <FieldError />
+          </TextField>
 
-            {/* Password */}
-            <TextField
-              isRequired
-              minLength={8}
-              name="password"
-              validate={(value) => {
-                if (value.length < 8) {
-                  return "Password must be at least 8 characters";
-                }
-                if (!/[A-Z]/.test(value)) {
-                  return "Password must contain at least one uppercase letter";
-                }
-                if (!/[0-9]/.test(value)) {
-                  return "Password must contain at least one number";
-                }
-                return null;
-              }}
-            >
-              <Label>Password</Label>
+          <TextField isRequired name="password">
+            <Label>Password</Label>
 
-              <InputGroup>
-                <InputGroup.Input
-                  name="password"
-                  placeholder="Enter your password"
-                  type={isVisible ? "text" : "password"}
-                />
+            <InputGroup>
+              <InputGroup.Input
+                name="password"
+                type={isVisible ? "text" : "password"}
+                placeholder="Enter password"
+              />
 
-                <InputGroup.Suffix>
-                  <Button
-                    isIconOnly
-                    size="sm"
-                    variant="ghost"
-                    type="button"
-                    onPress={() => setIsVisible(!isVisible)}
-                  >
-                    {isVisible ? <Eye /> : <EyeSlash />}
-                  </Button>
-                </InputGroup.Suffix>
-              </InputGroup>
+              <InputGroup.Suffix>
+                <Button
+                  isIconOnly
+                  type="button"
+                  onPress={() => setIsVisible(!isVisible)}
+                >
+                  {isVisible ? <Eye /> : <EyeSlash />}
+                </Button>
+              </InputGroup.Suffix>
+            </InputGroup>
 
-              <Description>
-                Must be at least 8 characters with 1 uppercase and 1 number
-              </Description>
+            <FieldError />
+          </TextField>
 
-              <FieldError />
-            </TextField>
+          <Button type="submit" className="w-full bg-black text-white">
+            Login
+          </Button>
 
-            {/* Button */}
-            <Button
-              type="submit"
-              className="mt-2 w-full bg-black text-white hover:bg-gray-800"
-            >
-              Login
-            </Button>
-
-            {/* Register */}
-            <p className="mt-2 text-center text-sm text-gray-500">
-              Don't Have An Account ?{" "}
-              <Link href="/signup" className="text-red-500 hover:underline">
-                Register
-              </Link>
-            </p>
-          </Form>
-        </div>
+          <p className="text-center text-sm">
+            Don't have account? <Link href="/signup">Register</Link>
+          </p>
+        </Form>
       </div>
-    </>
+    </div>
   );
-};
+}
 
-export default LogInPage;
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LoginForm />
+    </Suspense>
+  );
+}

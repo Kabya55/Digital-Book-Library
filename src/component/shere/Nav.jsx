@@ -4,6 +4,7 @@ import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const Nav = () => {
   const { data: session, isPending } = authClient.useSession();
@@ -26,7 +27,7 @@ const Nav = () => {
         router.refresh();
       }
     } catch (err) {
-      console.log("Logout Error:", err);
+      toast.error("Logout Error:", err);
     }
   };
 

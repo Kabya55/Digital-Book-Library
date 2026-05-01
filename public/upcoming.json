@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "title": "The Future of AI",
+    "date": "Coming May 2026",
+    "image": "https://sageuniversity.edu.in/assets/images/blog/the-future-of-artificial-intelligence.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Deep Space Journey",
+    "date": "Coming June 2026",
+    "image": "https://m.media-amazon.com/images/I/81HzJwUBBsL._AC_UF350,350_QL50_.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Modern Web Design",
+    "date": "Coming July 2026",
+    "image": "https://m.media-amazon.com/images/I/71trhLv66mL._AC_UF1000,1000_QL80_.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Quantum World",
+    "date": "Coming August 2026",
+    "image": "https://m.media-amazon.com/images/I/71Lub1LdOlL._AC_UF1000,1000_QL80_.jpg"
+  },
+  {
+    "id": 5,
+    "title": "AI & Machine Learning Guide",
+    "date": "Coming September 2026",
+    "image": "https://m.media-amazon.com/images/I/715bNmORIcL._UF1000,1000_QL80_.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Cyber Security Essentials",
+    "date": "Coming October 2026",
+    "image": "https://m.media-amazon.com/images/I/71TkE+WJ61L._AC_UF1000,1000_QL80_.jpg"
+  },
+  {
+    "id": 7,
+    "title": "Beyond Earth",
+    "date": "Coming November 2026",
+    "image": "https://m.media-amazon.com/images/I/61bGrbW0c1L._AC_UF1000,1000_QL80_.jpg"
+  },
+  {
+    "id": 8,
+    "title": "Next Gen Programming",
+    "date": "Coming December 2026",
+    "image": "https://images-eu.ssl-images-amazon.com/images/I/61Hc-9h+-XL._AC_UL600_SR600,600_.jpg"
+  }
+]

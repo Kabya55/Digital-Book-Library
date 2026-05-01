@@ -25,7 +25,6 @@ const UpdateProfilePage = () => {
       name: updatedUser.name,
     });
 
-    // 👉 update শেষ হলে redirect
     router.push("/profile");
   };
 
@@ -49,7 +48,6 @@ const UpdateProfilePage = () => {
             <FieldError />
           </TextField>
 
-          {/* ❌ Link remove করা হয়েছে */}
           <Button
             type="submit"
             className="mt-2 w-full bg-black text-white hover:bg-gray-800"

@@ -16,6 +16,7 @@ import { useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
+import { GrGoogle } from "react-icons/gr";
 
 function LoginForm() {
   const [isVisible, setIsVisible] = useState(false);
@@ -42,6 +43,12 @@ function LoginForm() {
     if (data) {
       toast.success("Login successful");
     }
+  };
+
+  const handelGoogleLogin = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
   };
 
   return (
@@ -123,6 +130,14 @@ function LoginForm() {
               className="mt-2 w-full bg-black text-white hover:bg-gray-800"
             >
               Login
+            </Button>
+            <h1 className="mx-auto text-md font-semibold">OR</h1>
+            <Button
+              onClick={handelGoogleLogin}
+              className="mt-2 w-full bg-black text-white hover:bg-gray-800"
+            >
+              <GrGoogle className="mr-2" />
+              Login with Google
             </Button>
 
             {/* Register */}

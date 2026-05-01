@@ -1,6 +1,7 @@
 "use client";
 
 import { authClient } from "@/lib/auth-client";
+import { Fallback } from "next/dist/client/components/segment-cache/cache-map";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -74,14 +75,21 @@ const Nav = () => {
               <h2 className="text-sm font-medium hidden md:block">
                 Hello, {user.name}
               </h2>
-              <Image
-                src={userAvatar}
-                alt="User profile"
-                width={35}
-                height={35}
-                className="rounded-full border object-cover"
-                unoptimized
-              />
+              {userAvatar ? (
+                <Image
+                  src={userAvatar}
+                  alt="User profile"
+                  width={35}
+                  height={35}
+                  className="rounded-full border object-cover"
+                  referrerPolicy="no-referrer"
+                  unoptimized
+                />
+              ) : (
+                <div className="w-[35px] h-[35px] rounded-full bg-gray-800 text-white flex items-center justify-center text-sm font-semibold">
+                  {user?.name?.charAt(0).toUpperCase()}
+                </div>
+              )}
               <button
                 onClick={handleLogout}
                 className="px-3 py-1 rounded-md bg-gray-200 hover:bg-red-500 hover:text-white transition-all text-sm"

@@ -15,6 +15,7 @@ import { Eye, EyeSlash } from "@gravity-ui/icons";
 import { useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
 
 function LoginForm() {
   const [isVisible, setIsVisible] = useState(false);
@@ -35,11 +36,11 @@ function LoginForm() {
     });
 
     if (error) {
-      alert(error.message);
+      toast.error(error.message || "Login failed");
     }
 
     if (data) {
-      alert("Login successful");
+      toast.success("Login successful");
     }
   };
 

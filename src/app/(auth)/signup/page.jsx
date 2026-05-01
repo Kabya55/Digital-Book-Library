@@ -15,6 +15,7 @@ import { Eye, EyeSlash } from "@gravity-ui/icons";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
 
 const SignUpPage = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -30,19 +31,17 @@ const SignUpPage = () => {
       email: userData.email,
       password: userData.password,
       image: userData.photo,
-      callbackURL: "/",
+      callbackURL: "/login?registered=true",
     });
 
     if (error) {
-      console.log(error);
-      alert(error.message || "Signup failed");
+      toast.error(error.message || "Signup failed");
       return;
     }
 
     if (data) {
-      console.log("SUCCESS:", data);
-      router.push("/");
-      router.refresh();
+      toast.success("Account created successfully!");
+      router.push("/login?registered=true");
     }
   };
 

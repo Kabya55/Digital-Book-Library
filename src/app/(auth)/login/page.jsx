@@ -44,53 +44,97 @@ function LoginForm() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <div className="rounded-lg bg-white p-8 shadow-md">
-        <h2 className="mb-6 text-center text-2xl font-semibold">
-          Login your account
-        </h2>
+    <>
+      <div className="flex min-h-screen items-center justify-center bg-gray-100">
+        <div className="rounded-lg bg-white p-8 shadow-md">
+          <h2 className="mb-6 text-center text-2xl font-semibold">
+            Login your account
+          </h2>
 
-        <Form className="flex flex-col gap-4" onSubmit={onSubmit}>
-          <TextField isRequired name="email" type="email">
-            <Label>Email address</Label>
-            <Input placeholder="Enter your email address" />
-            <FieldError />
-          </TextField>
+          <Form className="flex flex-col gap-4" onSubmit={onSubmit}>
+            {/* Email */}
+            <TextField
+              isRequired
+              name="email"
+              type="email"
+              validate={(value) => {
+                if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
+                  return "Please enter a valid email address";
+                }
+                return null;
+              }}
+            >
+              <Label>Email address</Label>
+              <Input placeholder="Enter your email address" />
+              <FieldError />
+            </TextField>
 
-          <TextField isRequired name="password">
-            <Label>Password</Label>
+            {/* Password */}
+            <TextField
+              isRequired
+              minLength={8}
+              name="password"
+              validate={(value) => {
+                if (value.length < 8) {
+                  return "Password must be at least 8 characters";
+                }
+                if (!/[A-Z]/.test(value)) {
+                  return "Password must contain at least one uppercase letter";
+                }
+                if (!/[0-9]/.test(value)) {
+                  return "Password must contain at least one number";
+                }
+                return null;
+              }}
+            >
+              <Label>Password</Label>
 
-            <InputGroup>
-              <InputGroup.Input
-                name="password"
-                type={isVisible ? "text" : "password"}
-                placeholder="Enter password"
-              />
+              <InputGroup>
+                <InputGroup.Input
+                  name="password"
+                  placeholder="Enter your password"
+                  type={isVisible ? "text" : "password"}
+                />
 
-              <InputGroup.Suffix>
-                <Button
-                  isIconOnly
-                  type="button"
-                  onPress={() => setIsVisible(!isVisible)}
-                >
-                  {isVisible ? <Eye /> : <EyeSlash />}
-                </Button>
-              </InputGroup.Suffix>
-            </InputGroup>
+                <InputGroup.Suffix>
+                  <Button
+                    isIconOnly
+                    size="sm"
+                    variant="ghost"
+                    type="button"
+                    onPress={() => setIsVisible(!isVisible)}
+                  >
+                    {isVisible ? <Eye /> : <EyeSlash />}
+                  </Button>
+                </InputGroup.Suffix>
+              </InputGroup>
 
-            <FieldError />
-          </TextField>
+              <Description>
+                Must be at least 8 characters with 1 uppercase and 1 number
+              </Description>
 
-          <Button type="submit" className="w-full bg-black text-white">
-            Login
-          </Button>
+              <FieldError />
+            </TextField>
 
-          <p className="text-center text-sm">
-            Don't have account? <Link href="/signup">Register</Link>
-          </p>
-        </Form>
+            {/* Button */}
+            <Button
+              type="submit"
+              className="mt-2 w-full bg-black text-white hover:bg-gray-800"
+            >
+              Login
+            </Button>
+
+            {/* Register */}
+            <p className="mt-2 text-center text-sm text-gray-500">
+              Don't Have An Account ?{" "}
+              <Link href="/signup" className="text-red-500 hover:underline">
+                Register
+              </Link>
+            </p>
+          </Form>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

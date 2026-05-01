@@ -1,6 +1,7 @@
 "use client";
 
 import { authClient } from "@/lib/auth-client";
+import { Spinner } from "@heroui/react";
 import { Fallback } from "next/dist/client/components/segment-cache/cache-map";
 import Image from "next/image";
 import Link from "next/link";
@@ -69,7 +70,7 @@ const Nav = () => {
 
         <div className="flex items-center gap-3">
           {isPending ? (
-            <span className="loading loading-spinner loading-md"></span>
+            <Spinner size="md" color="danger" />
           ) : user ? (
             <div className="flex items-center gap-3">
               <h2 className="text-sm font-medium hidden md:block">

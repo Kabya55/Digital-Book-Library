@@ -29,14 +29,20 @@ const ProfilePage = () => {
       <div className="max-w-3xl mx-auto bg-white shadow-md rounded-xl p-6">
         {/* Header */}
         <div className="flex items-center gap-6">
-          <Image
-            src={user.image || "/default-avatar.png"}
-            alt="User Avatar"
-            width={100}
-            height={100}
-            className="rounded-full object-cover border"
-            unoptimized
-          />
+          {user.image ? (
+            <Image
+              src={user.image}
+              alt="User Avatar"
+              width={100}
+              height={100}
+              className="rounded-full object-cover border"
+              unoptimized
+            />
+          ) : (
+            <div className="w-[100px] h-[100px] flex items-center justify-center rounded-full bg-gray-300 text-3xl font-bold text-gray-700 border">
+              {user?.name?.slice(0, 2).toUpperCase()}
+            </div>
+          )}
 
           <div>
             <h2 className="text-2xl font-bold">{user.name}</h2>
@@ -57,11 +63,6 @@ const ProfilePage = () => {
           <div className="p-4 border rounded-lg">
             <p className="text-sm text-gray-500">Email Address</p>
             <p className="font-semibold">{user.email}</p>
-          </div>
-
-          <div className="p-4 border rounded-lg">
-            <p className="text-sm text-gray-500">Account Type</p>
-            <p className="font-semibold">Standard User</p>
           </div>
         </div>
 

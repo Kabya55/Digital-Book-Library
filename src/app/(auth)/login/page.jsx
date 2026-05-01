@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import {
   Button,
@@ -13,63 +12,46 @@ import {
 } from "@heroui/react";
 import { Eye, EyeSlash } from "@gravity-ui/icons";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { authClient } from "@/app/lib/auth-client";
 
-const SignUpPage = () => {
+const LogInPage = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  // const prevUrl = document.referrer;
+  // console.log(prevUrl);
   const onSubmit = async (e) => {
     e.preventDefault();
-
     const formData = new FormData(e.currentTarget);
-    const userData = Object.fromEntries(formData.entries());
 
-    const { data, error } = await authClient.signUp.email({
-      name: userData.name,
-      email: userData.email,
-      password: userData.password,
-      image: userData.photo,
-      callbackURL: "/",
+    const userData = Object.fromEntries(formData.entries());
+    const callbackUrl = searchParams.get("callbackUrl") || "/";
+
+    const { data, error } = await authClient.signIn.email({
+      email: userData.email, // required
+      password: userData.password, // required
+      rememberMe: true,
+      callbackURL: callbackUrl,
     });
 
     if (error) {
-      console.log(error);
-      alert(error.message || "Signup failed");
-      return;
+      alert("Login error:", error);
     }
-
     if (data) {
-      console.log("SUCCESS:", data);
-      router.push("/");
-      router.refresh();
+      alert("Login successful:", data);
     }
   };
 
   return (
     <>
       <div className="flex min-h-screen items-center justify-center bg-gray-100">
-        <div className="w-[400px] rounded-lg bg-white p-8 shadow-md">
-          {/* Title */}
+        <div className="rounded-lg bg-white p-8 shadow-md">
           <h2 className="mb-6 text-center text-2xl font-semibold">
-            Register your account
+            Login your account
           </h2>
 
           <Form className="flex flex-col gap-4" onSubmit={onSubmit}>
-            {/* Name */}
-            <TextField isRequired name="name">
-              <Label>Your Name</Label>
-              <Input placeholder="Enter your name" />
-              <FieldError />
-            </TextField>
-
-            {/* Photo URL */}
-            <TextField name="photo">
-              <Label>Photo URL</Label>
-              <Input placeholder="Enter photo URL" />
-              <FieldError />
-            </TextField>
-
             {/* Email */}
             <TextField
               isRequired
@@ -82,7 +64,7 @@ const SignUpPage = () => {
                 return null;
               }}
             >
-              <Label>Email</Label>
+              <Label>Email address</Label>
               <Input placeholder="Enter your email address" />
               <FieldError />
             </TextField>
@@ -134,25 +116,19 @@ const SignUpPage = () => {
               <FieldError />
             </TextField>
 
-            {/* Checkbox */}
-            <label className="flex items-center gap-2 text-sm text-gray-600">
-              <input type="checkbox" required />
-              Accept Term & Conditions
-            </label>
-
             {/* Button */}
             <Button
               type="submit"
               className="mt-2 w-full bg-black text-white hover:bg-gray-800"
             >
-              Register
+              Login
             </Button>
 
-            {/* Login link */}
+            {/* Register */}
             <p className="mt-2 text-center text-sm text-gray-500">
-              Already have an account?{" "}
-              <Link href="/login" className="text-blue-500 hover:underline">
-                Login
+              Don't Have An Account ?{" "}
+              <Link href="/signup" className="text-red-500 hover:underline">
+                Register
               </Link>
             </p>
           </Form>
@@ -162,4 +138,4 @@ const SignUpPage = () => {
   );
 };
 
-export default SignUpPage;
+export default LogInPage;

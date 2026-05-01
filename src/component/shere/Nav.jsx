@@ -36,7 +36,7 @@ const Nav = () => {
               <Link href={"/signup"}>SignUp</Link>
             </li>
             <li>
-              <Link href={"/signin"}>SignIn</Link>
+              <Link href={"/login"}>Login</Link>
             </li>
           </ul>
         </div>

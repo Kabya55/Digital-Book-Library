@@ -65,7 +65,7 @@ const Nav = () => {
 
   return (
     <div className="border-b px-2 bg-white sticky top-0 z-50">
-      <nav className="flex justify-between items-center py-3 max-w-7xl mx-auto w-full">
+      <nav className="flex justify-between items-center py-3 container mx-auto w-full">
         {/* Logo */}
         <Link href="/" className="flex gap-2 items-center">
           <Image src="/logo.png" alt="logo" width={30} height={30} priority />

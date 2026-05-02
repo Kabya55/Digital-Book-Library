@@ -13,7 +13,7 @@ It includes an authentication system and protected routes so that only logged-in
 
 ## 🐙 GitHub URL:
 
-👉 https://github.com/Kabya55
+👉 https://github.com/Kabya55/Digital-Book-Library
 
 ---
 
